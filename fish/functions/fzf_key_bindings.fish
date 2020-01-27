@@ -1,1 +1,1 @@
-/home/marklcrns/.cache/vim/dein/repos/github.com/junegunn/fzf/shell/key-bindings.fish
+/home/marklcrns/.fzf/shell/key-bindings.fish

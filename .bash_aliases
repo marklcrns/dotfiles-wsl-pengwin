@@ -4,7 +4,7 @@ alias bashrc='nvim ~/.bashrc'
 alias fishrc='nvim ~/.config/fish/config.fish'
 alias sofish='source ~/.config/fish/config.fish'
 alias vimrc='nvim ~/.vim/.vimrc'
-alias nvimrc='nvim ~/.config/nvim/init.vim'
+alias nvimrc='cd ~/.config/nvim'
 
 alias fd='fdfind'
 
@@ -20,9 +20,9 @@ alias down='cd /mnt/c/Users/MarkL/Downloads; clear'
 alias dev='cd ~/Projects/Dev; clear'
 alias devgit='cd ~/Projects/Dev/GitHubRepos; clear'
 
-alias ref='cd ~/Projects/References; clear'
-alias refwsl='cd ~/Projects/References/WSL; clear'
-alias refubu='cd ~/Projects/References/WSL/Ubuntu; clear'
+alias ref='cd ~/Projects/references; clear'
+alias refwsl='cd ~/Projects/references/WSL; clear'
+alias refubu='cd ~/Projects/references/WSL/Ubuntu; clear'
 
 # Secure files Aliases
 alias secenter='cd /mnt/c/Users/MarkL; cmd.exe /C Secure.bat; cd ./Secure; clear'
@@ -73,6 +73,11 @@ alias flask='FLASK_APP=application.py FLASK_DEBUG=1 python -m flask run'
 alias envactivate='source env/bin/activate'
 alias envactivatefish='source env/bin/activate.fish'
 
+# Binaries
+alias ls='exa'
+alias l='exa -l'
+alias la='exa -la'
+
 # Shortcut Commands
 
 ## xclip shortcuts
@@ -95,8 +100,10 @@ alias pwdc='pwd | cs clipboard; clear'
 alias pwdp='cd "`vs clipboard`"; clear'
 
 # Updating dotfiles Repo
-alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/.tmux.conf ~/.vim/.vimrc ~/.config/fish ~/.profile .;git add .;clear; git status; cd -; nvim ~/Projects/dotfiles/updates.txt'
+alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/.zshrc ~/.zshenv ~/.tmux.conf ~/.vim/.vimrc ~/.config/fish ~/.profile .;git add .;clear; git status; cd -'
 alias dotfiles='cd ~/Projects/dotfiles'
+alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
+alias dotpush='cd ~/Projects/dotfiles;git push'
 
 # Nameserver workaround for WSL
 alias backupns='cat /etc/resolv.conf > ~/nameserver.txt'
@@ -113,5 +120,12 @@ alias stopms='sudo service mysql stop'
 alias stoppg='sudo service postgresql stop'
 alias runms='sudo mysql -u root -p'
 alias runpg='sudo -u postgres psql'
+
+# Rclone
+alias rcopy='rclone copy -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rsync='rclone sync -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+
+alias rclone-dev-gdrive='zip -r dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive: --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
 # alias linuxgui='startxfce4'
