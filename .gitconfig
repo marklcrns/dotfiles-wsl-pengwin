@@ -1,0 +1,30 @@
+[user]
+	email = marklcrns@gmail.com
+	name = Mark Lucernas
+[credential]
+	helper = cache --timeout=300
+
+# Resources:
+# https://www.grzegorowski.com/using-vim-or-neovim-nvim-as-a-git-mergetool
+# https://coderwall.com/p/qbtnsw/use-fugitive-as-git-mergetool
+# https://github.com/tpope/vim-fugitive
+# [merge]
+#   tool = fugitive
+# [mergetool "fugitive"]
+# 	# cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"  # 3 way horizontal split
+# 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"  # 3 way vertical split
+
+# Resources:
+# https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+# https://gist.github.com/karenyyng/f19ff75c60f18b4b8149
+[merge]
+  tool = vimdiff
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool]
+  prompt = true
+
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
