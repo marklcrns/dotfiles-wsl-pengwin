@@ -1,30 +1,63 @@
 [user]
 	email = marklcrns@gmail.com
 	name = Mark Lucernas
+
+[github]
+  user = marklcrns
+
+[push]
+  default = current
+
 [credential]
-	helper = cache --timeout=300
+	helper = cache --timeout=28800
 
 # Resources:
-# https://www.grzegorowski.com/using-vim-or-neovim-nvim-as-a-git-mergetool
-# https://coderwall.com/p/qbtnsw/use-fugitive-as-git-mergetool
-# https://github.com/tpope/vim-fugitive
+#   https://www.grzegorowski.com/using-vim-or-neovim-nvim-as-a-git-mergetool
+#   https://coderwall.com/p/qbtnsw/use-fugitive-as-git-mergetool
+#   https://github.com/tpope/vim-fugitive
 # [merge]
 #   tool = fugitive
 # [mergetool "fugitive"]
-# 	# cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"  # 3 way horizontal split
-# 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"  # 3 way vertical split
+#   cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"  # 3 way horizontal split
+#   cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"  # 3 way vertical split
 
 # Resources:
-# https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
-# https://gist.github.com/karenyyng/f19ff75c60f18b4b8149
+#   https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
+#   https://gist.github.com/karenyyng/f19ff75c60f18b4b8149
+#   https://stackoverflow.com/questions/14904644/how-do-i-use-vimdiff-to-resolve-a-git-merge-conflict
 [merge]
-  tool = vimdiff
-[mergetool "vimdiff"]
+  tool = nvimdiff
+[mergetool "nvimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [mergetool]
   prompt = true
 
 [diff]
-  tool = vimdiff
+  tool = nvimdiff
 [difftool]
   prompt = false
+[difftool "nvimdiff"]
+  cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+
+[color]
+	ui = auto
+
+# Resources:
+# https://github.com/connermcd/dotfiles/blob/master/.gitconfig
+[alias]
+	st = status -sb
+	ci = commit
+	co = checkout
+	cb = checkout -b
+	di = diff
+	dc = diff --cached
+	aa = add --all
+	ff = merge --ff-only
+	pullff = pull --ff-only
+	noff = merge --no-ff
+	pom = push origin master
+	b = branch
+	ds = diff --stat=160,120
+	dh1 = diff HEAD~1
+	l = log --simplify-merges --graph --pretty="tformat:%C(yellow)%h%Creset\\ %Cgreen(%ar)%Creset\\ %C(blue)<%an>%Creset\\ %C(red)%d%Creset\\ %s"
+  lf = log origin/master ^master

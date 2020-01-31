@@ -100,7 +100,7 @@ alias pwdc='pwd | cs clipboard; clear'
 alias pwdp='cd "`vs clipboard`"; clear'
 
 # Updating dotfiles Repo
-alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.vim/.vimrc ~/.config/fish ~/.profile .;git add .;clear; git status; cd -'
+alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile .;git add .;clear; git status; cd -'
 alias dotfiles='cd ~/Projects/dotfiles'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
