@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export PATH=$PATH:/mnt/c/Program\ Files/Mozilla\ Firefox/
+export PATH=$PATH:/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application
+
 # Tldr Config
 # Repo: https://github.com/raylee/tldr
 export PATH=$PATH:~/bin

@@ -6,6 +6,7 @@ alias sofish='source ~/.config/fish/config.fish'
 alias vimrc='nvim ~/.vim/.vimrc'
 alias nvimrc='cd ~/.config/nvim'
 
+# Short alias for fdfind binary
 alias fd='fdfind'
 
 # Completely remove apt package and its configuration
@@ -16,7 +17,7 @@ alias home='cd /mnt/c/Users/MarkL; clear'
 alias docs='cd /mnt/c/Users/MarkL/Documents; clear'
 alias trade='cd /mnt/c/Users/MarkL/OneDrive/Trading/Stocks; clear'
 alias down='cd /mnt/c/Users/MarkL/Downloads; clear'
-
+alias docs='cd ~/Docs'
 alias dev='cd ~/Projects/Dev; clear'
 alias devgit='cd ~/Projects/Dev/GitHubRepos; clear'
 
@@ -40,17 +41,12 @@ alias charm='/mnt/c/Users/MarkL/AppData/Local/JetBrains/Toolbox/apps/PyCharm-C/c
 # Running Windows executable
 alias cmd='cmd.exe /C'
 alias ps='powershell.exe /C'
-alias open='xdg-open'
 alias explore='explorer.exe'
-
 # Windows installed browsers
-alias winfirefox='firefox.exe'
-alias winchrome='chrome.exe'
+alias ffox='firefox.exe'
+alias gchrome='chrome.exe'
 
-# Linux installed browsers
-#alias firefox='firefox'
-#alias chrome='google-chrome-stable'
-#alias chromium='chromium-browser'
+alias open='xdg-open'
 
 # GitHub
 alias gh='open https://github.com; clear'
@@ -80,13 +76,17 @@ alias la='exa -la'
 
 # Shortcut Commands
 
-## xclip shortcuts
-### use pipe before the alias command to work with xclip
-### https://stackoverflow.com/questions/5130968/how-can-i-copy-the-output-of-a-command-directly-into-my-clipboard#answer-5130969
+# xclip shortcuts
+# use pipe before the alias command to work with xclip
+# https://stackoverflow.com/questions/5130968/how-can-i-copy-the-output-of-a-command-directly-into-my-clipboard#answer-5130969
 alias c='xclip'
 alias v='xclip -o'
 alias cs='xclip -selection'
 alias vs='xclip -o -selection'
+
+# Vimwiki
+alias vimwiki='nvim -c VimwikiIndex; clear'
+alias wikidocs='cd ~/Docs'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
 alias rmdebs='find . -name "debug.log" -type f; find . -name "debug.log" -type f -delete'
@@ -100,7 +100,7 @@ alias pwdc='pwd | cs clipboard; clear'
 alias pwdp='cd "`vs clipboard`"; clear'
 
 # Updating dotfiles Repo
-alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.config/coc/ultisnips ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile .;git add .;clear; git status; cd -'
+alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile .;git add .;clear; git status; cd -'
 alias dotfiles='cd ~/Projects/dotfiles'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
