@@ -53,7 +53,8 @@ alias open='xdg-open'
 alias gh='open https://github.com; clear'
 alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/http:\/\//' | sed "s/com:/com\//"`| head -n1'
 alias gist='open https://gist.github.com; clear'
-alias insig-commit='git add  . && git commit -m "Insignificant commit" && git push origin master'
+alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push origin master'
+alias commitall='git add . && git commit'
 
 # live browser server
 # alias live='http-server'
