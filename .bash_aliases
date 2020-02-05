@@ -13,10 +13,11 @@ alias fd='fdfind'
 alias aptremove='sudo apt purge --auto-remove'
 
 # Directories Aliases
-alias home='cd /mnt/c/Users/MarkL; clear'
-alias docs='cd /mnt/c/Users/MarkL/Documents; clear'
-alias trade='cd /mnt/c/Users/MarkL/OneDrive/Trading/Stocks; clear'
-alias down='cd /mnt/c/Users/MarkL/Downloads; clear'
+alias winhome='cd /mnt/c/Users/MarkL; clear'
+alias windocs='cd /mnt/c/Users/MarkL/Documents; clear'
+alias wintrade='cd /mnt/c/Users/MarkL/OneDrive/Trading/Stocks; clear'
+alias windown='cd /mnt/c/Users/MarkL/Downloads; clear'
+alias down='cd ~/Downloads'
 alias docs='cd ~/Docs'
 alias dev='cd ~/Projects/Dev; clear'
 alias devgit='cd ~/Projects/Dev/GitHubRepos; clear'
@@ -52,6 +53,7 @@ alias open='xdg-open'
 alias gh='open https://github.com; clear'
 alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/http:\/\//' | sed "s/com:/com\//"`| head -n1'
 alias gist='open https://gist.github.com; clear'
+alias insig-commit='git add  . && git commit -m "Insignificant commit" && git push origin master'
 
 # live browser server
 # alias live='http-server'
@@ -86,7 +88,7 @@ alias vs='xclip -o -selection'
 
 # Vimwiki
 alias vimwiki='nvim -c VimwikiIndex; clear'
-alias wikidocs='cd ~/Docs'
+alias wikidocs='cd ~/Docs/wikidocs'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
 alias rmdebs='find . -name "debug.log" -type f; find . -name "debug.log" -type f -delete'
