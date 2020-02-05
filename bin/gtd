@@ -1,23 +1,30 @@
 #!/bin/bash
 
+# A simple shell script for effective time management.
+#
+# All the credits goes to Conner McDaniel for this amazing script
+# https://github.com/connermcd/gtd
+# ---------------------------------------------------------------
+
 set -e
 
 # Command configuration
 CUSTOM_CMD="${CUSTOM_CMD:-"clear"}"
-MPD_CMD="${MPD_CMD:-"mpc -q toggle"}"
+MPD_CMD_BREAK="${MPD_CMD_BREAK:-"spotifycli --pause"}"
+MPD_CMD_WORK="${MPD_CMD_WORK:-"spotifycli --play"}"
 NOTIFY_CMD="${NOTIFY_CMD:-"notify-send"}"
-SPEAK_CMD="${SPEAK_CMD:-"&>/dev/null espeak"}"
+SPEAK_CMD="${SPEAK_CMD:-"cd /mnt/c/Users/MarkL/Documents/gtd/espeak; cmd.exe /c start"}"
 
 # Setting configuration
 DEFAULT_WORK_LENGTH="${DEFAULT_WORK_LENGTH:-15}"
 DEFAULT_BREAK_LENGTH="${DEFAULT_BREAK_LENGTH}"
-NOTIFY_WORK="${NOTIFY_WORK:-"\"Get things done.\""}"
-NOTIFY_BREAK="${NOTIFY_BREAK:-"\"Take a break.\""}"
-SPEAK_WORK="${SPEAK_WORK:-"$NOTIFY_WORK"}"
-SPEAK_BREAK="${SPEAK_BREAK:-"$NOTIFY_BREAK"}"
+NOTIFY_WORK="${NOTIFY_WORK:-"\"TIME TO WORK!\""}"
+NOTIFY_BREAK="${NOTIFY_BREAK:-"\"Take a break\""}"
+SPEAK_WORK="${SPEAK_WORK:-"./espeak_gtd_work_v2.wav"}"
+SPEAK_BREAK="${SPEAK_BREAK:-"./espeak_gtd_break_v2.wav"}"
 
 # File configuration
-CFG_FILE="${CFG_FILE:-$HOME/.gtdrc}"
+CFG_FILE="${CFG_FILE:-$HOME/.gtd/.gtdrc}"
 
 # Check for configuration file and source it
 if [[ -e "$CFG_FILE" ]]; then
@@ -123,8 +130,13 @@ vsleep() {
 
       # Updates a temporary file for tmux to read from and refreshes the client
       if [[ -n "$DO_TMUX" ]]; then
-         (echo -ne "$hms |" > /tmp/gtd-tmux)
-         (tmux refresh-client -S)
+          if [[ -n "$in_break" ]]; then
+            (echo -ne "#[fg=yellow]$hms #[fg=cyan]Break" > /tmp/gtd-tmux)
+            (tmux refresh-client -S)
+          else
+            (echo -ne "$hms #[fg=red]WORK!" > /tmp/gtd-tmux)
+            (tmux refresh-client -S)
+          fi
       fi
 
       if [[ -n "$DO_TMP_FILE" ]]; then
@@ -165,7 +177,15 @@ do_options() {
       fi
    fi
 
-   [[ -n "$DO_MPD" ]] && (sleep 1 && eval "$MPD_CMD")
+   if [[ -n "$DO_MPD" ]]; then
+      if [[ -n "$in_break" ]]; then
+          sleep 1 && eval "$MPD_CMD_BREAK"
+      else
+          sleep 1 && eval "$MPD_CMD_WORK"
+      fi
+   fi
+
+   # [[ -n "$DO_MPD" ]] && (sleep 1 && eval "$MPD_CMD")
 
    return 0
 }

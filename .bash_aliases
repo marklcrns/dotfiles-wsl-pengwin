@@ -103,7 +103,7 @@ alias pwdc='pwd | cs clipboard; clear'
 alias pwdp='cd "`vs clipboard`"; clear'
 
 # Updating dotfiles Repo
-alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile .;git add .;clear; git status; cd -'
+alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .;clear; git status; cd -'
 alias dotfiles='cd ~/Projects/dotfiles'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
@@ -130,5 +130,8 @@ alias rsync='rclone sync -vvP --fast-list --drive-chunk-size=32M --transfers=6 -
 
 alias rclone-dev-gdrive='zip -r dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive: --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+
+# gtd shell script
+alias on='gtd -ts'
 
 # alias linuxgui='startxfce4'
