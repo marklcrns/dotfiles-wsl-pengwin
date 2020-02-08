@@ -1,16 +1,18 @@
-# Additional aliases for .basrc and .zshrc
-
-alias bashrc='nvim ~/.bashrc'
+# config files
+alias vimrc='nvim ~/.vim/.vimrc'
+alias tmuxconf='nvim ~/.tmux.conf'
 alias fishrc='nvim ~/.config/fish/config.fish'
 alias sofish='source ~/.config/fish/config.fish'
-alias vimrc='nvim ~/.vim/.vimrc'
+alias bashrc='nvim ~/.bashrc'
+alias zshrc='nvim ~/.zshrc'
 alias nvimrc='cd ~/.config/nvim'
-
-# Short alias for fdfind binary
-alias fd='fdfind'
+alias myalias='nvim ~/.bash_aliases'
 
 # Completely remove apt package and its configuration
 alias aptremove='sudo apt purge --auto-remove'
+
+# Update all packages
+alias updateall='sudo apt update && sudo apt upgrade -y'
 
 # Directories Aliases
 alias winhome='cd /mnt/c/Users/MarkL; clear'
@@ -55,7 +57,8 @@ alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/ht
 alias gist='open https://gist.github.com; clear'
 alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push origin master'
 alias commitall='git add . && git commit'
-alias syncall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push origin master; cd ~/Docs/wikidocs; git add .; git commit; git push origin master; cd ~/.config/nvim; pwd; git add .; git commit; git push origin master; cd ~/Projects/references; git add .; git commit; git push origin master; cd ~/Projects/dotfiles; pwd; cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push origin master; echo "Update finished"'
+alias pushall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push origin master; cd ~/Docs/wikidocs; git add .; git commit; git push origin master; cd ~/.config/nvim; pwd; git add .; git commit; git push origin master; cd ~/Projects/references; git add .; git commit; git push origin master; cd ~/Projects/dotfiles; pwd; cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push origin master; echo "Update finished"'
+alias pullall='cd ~/.config/coc/ultisnips; pwd; git pull; cd ~/Docs/wikidocs; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
 
 # live browser server
 # alias live='http-server'
@@ -74,9 +77,12 @@ alias envactivate='source env/bin/activate'
 alias envactivatefish='source env/bin/activate.fish'
 
 # Binaries
+alias open='xdg-open'
 alias ls='exa'
 alias l='exa -l'
 alias la='exa -la'
+alias fd='fdfind'
+alias python='python3'
 
 # Shortcut Commands
 
@@ -89,7 +95,7 @@ alias cs='xclip -selection'
 alias vs='xclip -o -selection'
 
 # Vimwiki
-alias vimwiki='nvim -c VimwikiUISelect; clear'
+alias vimwiki='cd ~/Docs/wikidocs; nvim -c VimwikiUISelect; clear'
 alias wikidocs='cd ~/Docs/wikidocs'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
