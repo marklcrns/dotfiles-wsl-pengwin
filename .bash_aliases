@@ -55,6 +55,7 @@ alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/ht
 alias gist='open https://gist.github.com; clear'
 alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push origin master'
 alias commitall='git add . && git commit'
+alias pushall='cd ~/.config/coc/ultisnips; git add .; git commit; git push origin master; cd ~/Docs/wikidocs; git add .; git commit; git push origin master; cd ~/.config/nvim; git add .; git commit; git push origin master; cd ~/Projects/references; git add .; git commit; git push origin master; cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push origin master'
 
 # live browser server
 # alias live='http-server'
