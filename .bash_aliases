@@ -55,9 +55,9 @@ alias open='xdg-open'
 alias gh='open https://github.com; clear'
 alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/http:\/\//' | sed "s/com:/com\//"`| head -n1'
 alias gist='open https://gist.github.com; clear'
-alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push origin master'
+alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
 alias commitall='git add . && git commit'
-alias pushall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push origin master; cd ~/Docs/wikidocs; git add .; git commit; git push origin master; cd ~/.config/nvim; pwd; git add .; git commit; git push origin master; cd ~/Projects/references; git add .; git commit; git push origin master; cd ~/Projects/dotfiles; pwd; cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push origin master; echo "Update finished"'
+alias pushall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push; cd ~/Docs/wikidocs; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; cd ~/Projects/dotfiles; pwd; cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push; echo "Update finished"'
 alias pullall='cd ~/.config/coc/ultisnips; pwd; git pull; cd ~/Docs/wikidocs; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
 
 # live browser server
