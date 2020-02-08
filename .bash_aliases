@@ -88,7 +88,7 @@ alias cs='xclip -selection'
 alias vs='xclip -o -selection'
 
 # Vimwiki
-alias vimwiki='nvim -c VimwikiIndex; clear'
+alias vimwiki='nvim -c VimwikiUISelect; clear'
 alias wikidocs='cd ~/Docs/wikidocs'
 
 # Remove debug.log files recursively (will also list all debug files before removal)

@@ -22,7 +22,7 @@ DEFAULT_USER=`whoami`
 #  cd ~
 # fi
 
-# Workaround for WSL 2 X Server issue
+# Workaround for WSL 2 X Server not working
 export DISPLAY=$(awk '/nameserver/ {print $2}' /etc/resolv.conf):0
 
 # Path to your oh-my-zsh installation.
