@@ -57,7 +57,7 @@ alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/ht
 alias gist='open https://gist.github.com; clear'
 alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
 alias commitall='git add . && git commit'
-alias pushall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push; cd ~/Docs/wikidocs; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; cd ~/Projects/dotfiles; pwd; cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push; echo "Update finished"'
+alias pushall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push; cd ~/Docs/wikidocs; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; cd ~/Projects/dotfiles; pwd; cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.scimrc ~/.gitconfig ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git commit; git push; echo "Update finished"'
 alias pullall='cd ~/.config/coc/ultisnips; pwd; git pull; cd ~/Docs/wikidocs; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
 
 # live browser server
@@ -95,7 +95,7 @@ alias cs='xclip -selection'
 alias vs='xclip -o -selection'
 
 # Vimwiki
-alias vimwiki='cd ~/Docs/wikidocs; nvim -c VimwikiUISelect; clear'
+alias wiki='cd ~/Docs/wikidocs; nvim -c VimwikiUISelect; clear'
 alias wikidocs='cd ~/Docs/wikidocs'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
