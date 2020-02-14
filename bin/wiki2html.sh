@@ -43,6 +43,7 @@ OUTPUT=$OUTPUTDIR$FILENAME
 
 # PANDOC ARGUMENTS
 
+# Mathjax tutorial for markdown: https://yihui.org/en/2018/07/latex-math-markdown/
 # If you have Mathjax locally use this:
 MATHJAX="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 # MATHJAX="/usr/share/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
@@ -54,6 +55,7 @@ pandoc_template="pandoc \
     --template=$TEMPLATE_PATH$TEMPLATE_DEFAULT$TEMPLATE_EXT \
     -f $SYNTAX \
     -t html \
+    --toc \
     -c $CSSFILENAME \
     -M root_path:$ROOT_PATH"
 
