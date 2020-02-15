@@ -32,9 +32,9 @@ ROOT_PATH="${10}"
 # If file is in vimwiki base dir, the root path is '-'
 [[ "$ROOT_PATH" = "-" ]] && ROOT_PATH=''
 
-# Example: index.md
-FILE=$(basename "$INPUT")
 # Example: index
+FILE=$(basename "$INPUT")
+# Example: index.md
 FILENAME=$(basename "$INPUT" ."$EXTENSION")
 # Example: /home/rattletat/wiki/text/uni/
 FILEPATH=${INPUT%$FILE}
@@ -56,7 +56,9 @@ pandoc_template="pandoc \
     -f $SYNTAX \
     -t html \
     --toc \
+    --toc-depth=4 \
     -c $CSSFILENAME \
+    --resource-path=~
     -M root_path:$ROOT_PATH"
 
 # Searches for markdown links (without extension or .md) and appends a .html
@@ -69,7 +71,8 @@ pandoc_output=$(echo "$pandoc_input" | $pandoc_template)
 
 # POSTPANDOC PROCESSING
 
-# Removes "file" from ![pic of sharks](file:../sharks.jpg)
-regex3='s/file://g'
+# Removes "vfile" and "file" from ![pic of sharks](file:../sharks.jpg)
+regex3='s/vfile://g'
+regex4='s/file://g'
 
-echo "$pandoc_output" | sed -r $regex3 > "$OUTPUT.html"
+echo "$pandoc_output" | sed -r $regex3 | sed -r $regex4 > "$OUTPUT.html"
