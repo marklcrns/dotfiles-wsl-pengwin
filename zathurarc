@@ -1,5 +1,5 @@
-set window-height 2100
-set window-width  1280
+set window-height 1080
+set window-width  960
 set adjust-open   best-fit
 set page-padding  1
 set selection-clipboard clipboard
