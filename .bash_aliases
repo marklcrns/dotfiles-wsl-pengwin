@@ -96,6 +96,7 @@ alias vs='xclip -o -selection'
 
 # Vimwiki
 alias wiki='cd ~/Docs/wiki; nvim -c VimwikiUISelect; clear'
+alias diary='cd ~/Docs/wiki; nvim -c VimwikiDiaryIndex; clear'
 alias wikidocs='cd ~/Docs/wiki'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
@@ -105,9 +106,9 @@ alias rmlogs='find . -name "*.log" -type f; find . -name "*.log" -type f -delete
 # Remove .root files recuresively (will also list all debug files before removal)
 alias rmroot='find . -name "*.root" -type f; find . -name "*.root" -type f -delete'
 
-# Copy and pasting current working directory from and to clipboard
-alias pwdc='pwd | cs clipboard; clear'
-alias pwdp='cd "`vs clipboard`"; clear'
+# Copy/yank and pasting current working directory system clipboard
+alias ypath='pwd | cs clipboard; clear'
+alias ppath='cd "`vs clipboard`"; clear'
 
 # Updating dotfiles Repo
 alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.config/zathura/zathurarc ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git status; cd -'
