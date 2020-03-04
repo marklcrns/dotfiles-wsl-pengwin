@@ -57,6 +57,7 @@
 	ff = merge --ff-only
 	pullff = pull --ff-only
 	noff = merge --no-ff
+  p = push
 	pom = push origin master
 	b = branch
 	l = log --simplify-merges --graph --pretty="tformat:%C(yellow)%h%Creset\\ %Cgreen(%ar)%Creset\\ %C(blue)<%an>%Creset\\ %C(red)%d%Creset\\ %s"
