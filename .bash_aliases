@@ -57,8 +57,8 @@ alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/ht
 alias gist='open https://gist.github.com; clear'
 alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
 alias commitall='git add . && git commit'
-alias pushall='cd ~/.config/coc/ultisnips; pwd; git add .; git commit; git push; cd ~/Docs/wiki; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; dotupdate; dotfiles; git commit; git push; echo "Update finished"'
-alias pullall='cd ~/.config/coc/ultisnips; pwd; git pull; cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
+alias pushall='cd ~/Docs/wiki; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; dotupdate; dotfiles; git commit; git push; echo "Update finished"'
+alias pullall='cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
 
 # live browser server
 # alias live='http-server'
