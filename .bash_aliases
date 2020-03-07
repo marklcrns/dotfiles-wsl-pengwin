@@ -14,13 +14,14 @@ alias aptremove='sudo apt purge --auto-remove'
 # Update all packages
 alias updateall='sudo apt update && sudo apt upgrade -y'
 
-# Directories Aliases
+# Directory Aliases
 alias winhome='cd /mnt/c/Users/MarkL; clear'
 alias windocs='cd /mnt/c/Users/MarkL/Documents; clear'
 alias wintrade='cd /mnt/c/Users/MarkL/OneDrive/Trading/Stocks; clear'
 alias windown='cd /mnt/c/Users/MarkL/Downloads; clear'
 alias down='cd ~/Downloads'
-alias docs='cd ~/Docs'
+alias docs='cd ~/Docs; clear'
+alias prof='cd ~/Projects; clear'
 alias dev='cd ~/Projects/Dev; clear'
 alias devgit='cd ~/Projects/Dev/GitHubRepos; clear'
 
@@ -49,8 +50,6 @@ alias explore='explorer.exe'
 alias ffox='firefox.exe'
 alias gchrome='chrome.exe'
 
-alias open='xdg-open'
-
 # GitHub
 alias gh='open https://github.com; clear'
 alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/http:\/\//' | sed "s/com:/com\//"`| head -n1'
@@ -70,7 +69,7 @@ alias browsersync='browser-sync start --server --files "*"'
 alias browsersync-proxy='browser-sync start --proxy 127.0.0.1:8000 --files "*"'
 
 # Flask
-alias flask='FLASK_APP=application.py FLASK_DEBUG=1 python -m flask run'
+alias flask='FLASK_APP=application.py FLASK_ENV=development FLASK_DEBUG=1 python -m flask run'
 
 # Python env
 alias envactivate='source env/bin/activate'
@@ -103,16 +102,16 @@ alias wikidocs='cd ~/Docs/wiki'
 alias rmdebs='find . -name "debug.log" -type f; find . -name "debug.log" -type f -delete'
 # Remove .log files recursively (will also list all .log files before removal)
 alias rmlogs='find . -name "*.log" -type f; find . -name "*.log" -type f -delete'
-# Remove .root files recuresively (will also list all debug files before removal)
-alias rmroot='find . -name "*.root" -type f; find . -name "*.root" -type f -delete'
 
 # Copy/yank and pasting current working directory system clipboard
 alias ypath='pwd | cs clipboard; clear'
 alias ppath='cd "`vs clipboard`"; clear'
 
-# Updating dotfiles Repo
-alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.config/zathura/zathurarc ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git status; cd -'
+# Update dotfiles backup repository
 alias dotfiles='cd ~/Projects/dotfiles'
+alias dotbackup='cd $HOME;cp -r .bashrc .bash_aliases .gitconfig .profile .tmux.conf ~/.vim/.vimrc .zshenv .zshrc ~/.config/ranger/rc.conf .gtd bin ~/Projects/dotfiles/.old.bak/; cd -'
+alias dotdistribute='dotbackup; cd ~/Projects/dotfiles;cp -r .bashrc .bash_aliases .gitconfig .profile .tmux.conf .zshenv .zshrc .gtd bin $HOME; cp rc.conf ~/.config/ranger/;cp .vimrc ~/.vim/; cd -'
+alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/bin ~/.zshrc ~/.zshenv ~/.gitconfig ~/.config/zathura/zathurarc ~/.tmux.conf ~/.config/fish ~/.profile /mnt/c/Users/MarkL/Documents/gtd .;git add .; git status; cd -'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
 
