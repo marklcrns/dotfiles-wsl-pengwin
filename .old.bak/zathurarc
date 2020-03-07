@@ -1,0 +1,6 @@
+set window-height 1080
+set window-width  960
+set adjust-open   best-fit
+set page-padding  1
+set selection-clipboard clipboard
+set window-icon /home/marklcrns/.config/zathura/icon.png
