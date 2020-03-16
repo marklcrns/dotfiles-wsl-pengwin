@@ -45,7 +45,7 @@ OUTPUT=$OUTPUTDIR$FILENAME
 
 # Mathjax tutorial for markdown: https://yihui.org/en/2018/07/latex-math-markdown/
 # If you have Mathjax locally use this:
-MATHJAX="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+MATHJAX="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/latest.js?config=TeX-AMS-MML_HTMLorMML"
 # MATHJAX="/usr/share/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 
 # PREPANDOC PROCESSING AND PANDOC
@@ -56,10 +56,11 @@ pandoc_template="pandoc \
     -f $SYNTAX \
     -t html \
     --toc \
-    --toc-depth=4 \
+    --toc-depth=3 \
     -c $CSSFILENAME \
-    --resource-path=~
+    -s \
     -M root_path:$ROOT_PATH"
+# --filter=R-pandoc \
 
 # Searches for markdown links (without extension or .md) and appends a .html
 regex1='s/(\[.+\])\(([^.)]+)(\.md)?\)/\1(\2.html)/g'
