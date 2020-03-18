@@ -62,18 +62,21 @@ pandoc_template="pandoc \
     -M root_path:$ROOT_PATH"
 # --filter=R-pandoc \
 
+# Searches for markdown markdown anchor links and append .html after the filename
+# Sample anchor link: [Some Text](filename#anchor-name)
+regex1='s/(\[.+\])\(([^.)#]+)([^.)]+)\)/\1(\2.html\3)/g'
 # Searches for markdown links (without extension or .md) and appends a .html
-regex1='s/(\[.+\])\(([^.)]+)(\.md)?\)/\1(\2.html)/g'
+regex2='s/(\[.+\])\(([^.#)]+)(\.md)?\)/\1(\2.html)/g'
 # Removes placeholder title from vimwiki markdown file
-regex2='s/^%title (.+)$/---\ntitle: \1\n---/'
+regex3='s/^%title (.+)$/---\ntitle: \1\n---/'
 
-pandoc_input=$(cat "$INPUT" | sed -r "$regex1;$regex2")
+pandoc_input=$(cat "$INPUT" | sed -r "$regex1;$regex2;$regex3")
 pandoc_output=$(echo "$pandoc_input" | $pandoc_template)
 
 # POSTPANDOC PROCESSING
 
 # Removes "vfile" and "file" from ![pic of sharks](file:../sharks.jpg)
-regex3='s/vfile://g'
-regex4='s/file://g'
+regex4='s/vfile://g'
+regex5='s/file://g'
 
-echo "$pandoc_output" | sed -r $regex3 | sed -r $regex4 > "$OUTPUT.html"
+echo "$pandoc_output" | sed -r "$regex4" | sed -r "$regex5" > "$OUTPUT.html"

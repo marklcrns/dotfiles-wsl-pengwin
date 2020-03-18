@@ -19,6 +19,7 @@ alias winhome='cd /mnt/c/Users/MarkL; clear'
 alias windocs='cd /mnt/c/Users/MarkL/Documents; clear'
 alias wintrade='cd /mnt/c/Users/MarkL/OneDrive/Trading/Stocks; clear'
 alias windown='cd /mnt/c/Users/MarkL/Downloads; clear'
+alias winbin='cd /mnt/c/bin; clear'
 alias down='cd ~/Downloads'
 alias docs='cd ~/Docs; clear'
 alias prof='cd ~/Projects; clear'
@@ -52,7 +53,7 @@ alias gchrome='chrome.exe'
 
 # GitHub
 alias gh='open https://github.com; clear'
-alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed 's/git@/http:\/\//' | sed "s/com:/com\//"`| head -n1'
+alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed "s/git@/http:\/\//" | sed "s/com:/com\//"`| head -n1'
 alias gist='open https://gist.github.com; clear'
 alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
 alias commitall='git add . && git commit'
@@ -106,6 +107,7 @@ alias rmlogs='find . -name "*.log" -type f; find . -name "*.log" -type f -delete
 # Copy/yank and pasting current working directory system clipboard
 alias ypath='pwd | cs clipboard; clear'
 alias ppath='cd "`vs clipboard`"; clear'
+alias winypath="pwd | sed 's/\//\\/g' | sed 's/\\home/\\\\wsl$\\WLinux\\home/g' | cs clipboard"
 
 # Update dotfiles backup repository
 alias dotfiles='cd ~/Projects/dotfiles'
@@ -141,4 +143,4 @@ alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir
 # gtd shell script
 alias on='gtd -ts'
 
-# alias linuxgui='startxfce4'
+ alias linuxgui='startxfce4'

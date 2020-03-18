@@ -23,7 +23,9 @@ DEFAULT_USER=`whoami`
 # fi
 
 # Workaround for WSL 2 X Server not working
-export DISPLAY=$(awk '/nameserver/ {print $2}' /etc/resolv.conf):0
+# export DISPLAY=$(awk '/nameserver/ {print $2}' /etc/resolv.conf):0
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/marklcrns/.oh-my-zsh"
