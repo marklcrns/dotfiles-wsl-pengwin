@@ -97,6 +97,7 @@ alias vs='xclip -o -selection'
 # Vimwiki
 alias wiki='cd ~/Docs/wiki; nvim -c VimwikiUISelect; clear'
 alias diary='cd ~/Docs/wiki; nvim -c VimwikiDiaryIndex; clear'
+alias today='cd ~/Docs/wiki; nvim -c VimwikiMakeDiaryNote; clear'
 alias wikidocs='cd ~/Docs/wiki'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
@@ -104,10 +105,15 @@ alias rmdebs='find . -name "debug.log" -type f; find . -name "debug.log" -type f
 # Remove .log files recursively (will also list all .log files before removal)
 alias rmlogs='find . -name "*.log" -type f; find . -name "*.log" -type f -delete'
 
-# Copy/yank and pasting current working directory system clipboard
+# Yank and pasting current working directory system clipboard
 alias ypath='pwd | cs clipboard; clear'
 alias ppath='cd "`vs clipboard`"; clear'
-alias winypath="pwd | sed 's/\//\\/g' | sed 's/\\home/\\\\wsl$\\WLinux\\home/g' | cs clipboard"
+
+# Yank currant path and convert to windows path
+winpath() {
+  pwd | sed -e 's/\//\\/g' -e 's/^.*\\c/\\\\wsl$\\WLinux\\home/g' | xclip -selection clipboard
+}
+alias winypath=winpath
 
 # Update dotfiles backup repository
 alias dotfiles='cd ~/Projects/dotfiles'
