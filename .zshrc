@@ -218,6 +218,7 @@ export FZF_ALT_C_COMMAND="fdfind --type d $fd_options"
 
 # default options with preview with bat > highlight > cat > tree
 # also with key bindings:
+# f1: toggle-preview-wrap
 # f2: toggle-preview
 # ctrl-e: xdg-open
 # ctrl-d: half-page-down
