@@ -106,12 +106,23 @@ alias rmdebs='find . -name "debug.log" -type f; find . -name "debug.log" -type f
 alias rmlogs='find . -name "*.log" -type f; find . -name "*.log" -type f -delete'
 
 # Yank and pasting current working directory system clipboard
-alias ypath='pwd | cs clipboard; clear'
+alias ypath='pwd | cs clipboard; clear; echo "`pwd`\n...path copied!"'
 alias ppath='cd "`vs clipboard`"; clear'
 
 # Yank currant path and convert to windows path
+# Resources:
+# Sed substitute uppercase lowercase: https://stackoverflow.com/questions/4569825/sed-one-liner-to-convert-all-uppercase-to-lowercase
+# Printf: https://linuxconfig.org/bash-printf-syntax-basics-with-examples
+# Access last returned value: https://askubuntu.com/questions/324423/how-to-access-the-last-return-value-in-bash
 winpath() {
-  pwd | sed -e 's/\//\\/g' -e 's/^.*\\c/\\\\wsl$\\WLinux\\home/g' | xclip -selection clipboard
+  regex1='s/\//\\/g'
+  regex2='s/~/\\\\wsl$\\WLinux\\home\\marklcrns/g'
+  regex3='s/\\home/\\\\wsl$\\WLinux\\home/g'
+  regex4='s/^\\mnt\\(\w)/\U\1:/g'
+
+  output=$(pwd | sed -e "$regex1" -e "$regex2" -e "$regex3" -re "$regex4")
+  printf "%s" "$output" | xclip -selection clipboard
+  printf "%s\n...win path copied" "$output"
 }
 alias winypath=winpath
 
