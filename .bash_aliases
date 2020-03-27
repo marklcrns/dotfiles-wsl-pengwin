@@ -121,10 +121,9 @@ winpath() {
   regex4='s/^\\mnt\\(\w)/\U\1:/g'
 
   output=$(pwd | sed -e "$regex1" -e "$regex2" -e "$regex3" -re "$regex4")
-  printf "%s" "$output" | xclip -selection clipboard
-  printf "%s\n...win path copied" "$output"
+  printf "%s" "$output"
 }
-alias winypath=winpath
+alias winypath='winpath | xclip -selection clipboard; printf "%s\n...win path copied" "$output"'
 
 # Update dotfiles backup repository
 alias dotfiles='cd ~/Projects/dotfiles'
