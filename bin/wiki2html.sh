@@ -61,12 +61,13 @@ pandoc_template="pandoc \
     -s \
     -M root_path:$ROOT_PATH"
 # --filter=R-pandoc \
+# --filter=diagrams-pandoc \
 
 # Searches for markdown markdown anchor links and append .html after the filename
 # Sample anchor link: [Some Text](filename#anchor-name)
 regex1='s/(\[.+\])\(([^#)]+)(#[^.)]+)\)/\1(\2.html\3)/g'
 # Searches for markdown links (without extension or .md) and appends a .html
-regex2='s/(\[.+\])\(([^#)]+)(\.md)?\)/\1(\2.html)/g'
+regex2='s/(\[.+\])\(((\.\.\/)?([^.#)]+))(\.md|\))/\1(\2.html)/g'
 # Removes placeholder title from vimwiki markdown file
 regex3='s/^%title (.+)$/---\ntitle: \1\n---/'
 
