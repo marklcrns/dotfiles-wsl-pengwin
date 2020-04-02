@@ -64,10 +64,10 @@ alias pullall='cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; 
 # alias live='http-server'
 
 # tutorial https://www.youtube.com/watch?v=L9zfMeB2Zcc&app=desktop
-alias browsersync='browser-sync start --server --files "*"'
+alias bsync='browser-sync start --server --files "*"'
 # Proxy configured to work with Django
 # https://www.metaltoad.com/blog/instant-reload-django-npm-and-browsersync
-alias browsersync-proxy='browser-sync start --proxy 127.0.0.1:8000 --files "*"'
+alias bsync-proxy='browser-sync start --proxy 127.0.0.1:8000 --files "*"'
 
 # Flask
 alias flask='FLASK_APP=application.py FLASK_ENV=development FLASK_DEBUG=1 python -m flask run'
