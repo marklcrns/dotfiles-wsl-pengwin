@@ -50,12 +50,17 @@ MATHJAX="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/latest.js?config=T
 
 # PREPANDOC PROCESSING AND PANDOC
 
+# cd to output directory for pandoc filter resources images
+cd "$OUTPUTDIR" || exit
+
 pandoc_template="pandoc \
     --mathjax=$MATHJAX \
     --template=$TEMPLATE_PATH$TEMPLATE_DEFAULT$TEMPLATE_EXT \
     -f $SYNTAX \
     -t html \
     --toc \
+    --filter=R-pandoc \
+    --resource-path=$OUTPUTDIR
     --toc-depth=3 \
     -c $CSSFILENAME \
     -s \

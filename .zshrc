@@ -14,6 +14,10 @@ export TLDR_DESCRIPTION='green'
 export TLDR_CODE='red'
 export TLDR_PARAM='blue'
 
+# Environent PATHs
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.emacs.d/bin # emacs bin
+
 # truncate command line prompt user
 DEFAULT_USER=`whoami`
 
@@ -23,7 +27,6 @@ DEFAULT_USER=`whoami`
 # fi
 
 # Workaround for WSL 2 X Server not working
-# export DISPLAY=$(awk '/nameserver/ {print $2}' /etc/resolv.conf):0
 export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 export LIBGL_ALWAYS_INDIRECT=1
 
@@ -65,7 +68,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -218,13 +221,13 @@ export FZF_ALT_C_COMMAND="fdfind --type d $fd_options"
 
 # default options with preview with bat > highlight > cat > tree
 # also with key bindings:
-# f1: toggle-preview-wrap
-# f2: toggle-preview
+# ?: toggle-preview
 # ctrl-e: xdg-open
 # ctrl-d: half-page-down
 # ctrl-u: half-page-update
 # ctrl-a: select-all+accept
 # ctrl-y: yank current selection to clipboard using xclip
+# ctrl-z: toggle-preview-wrap
 # up arrow: preview scroll up
 # down arrow: preview scroll down
 export FZF_DEFAULT_OPTS="--ansi --height 90% -1 --reverse --multi --inline-info
@@ -235,7 +238,7 @@ export FZF_DEFAULT_OPTS="--ansi --height 90% -1 --reverse --multi --inline-info
                  cat {} ||
                  tree -c {}) 2> /dev/null | head -200'
                  --preview-window='bottom:55%:wrap:hidden'
-                 --bind='f1:toggle-preview-wrap,f2:toggle-preview,ctrl-l:cancel,ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all,ctrl-y:execute(echo {} | xclip -selection clipboard || echo {} | xclip),ctrl-e:execute(wsl-open {})'"
+                 --bind='ctrl-z:toggle-preview-wrap,?:toggle-preview,ctrl-l:cancel,ctrl-d:preview-page-down,ctrl-u:preview-page-up,ctrl-a:select-all,ctrl-y:execute(echo {} | xclip -selection clipboard || echo {} | xclip),ctrl-e:execute(wsl-open {})'"
 
 # ctrl-t options
 export FZF_CTRL_T_OPTS="--ansi --preview '(bat --color=always --decorations=always --style=numbers,grid --line-range :300 {} 2> /dev/null || cat {} || tree -c {}) 2> /dev/null | head -200'"
@@ -274,3 +277,6 @@ codi() {
     hi NonText ctermfg=0 |\
     Codi $syntax" "$@"
 }
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

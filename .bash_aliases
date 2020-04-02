@@ -94,6 +94,13 @@ alias v='xclip -o'
 alias cs='xclip -selection'
 alias vs='xclip -o -selection'
 
+# emacs
+alias enw='emacs -nw'
+
+# taskwarrior
+alias tw='task'
+alias twl='task list'
+
 # Vimwiki
 alias wiki='cd ~/Docs/wiki; nvim -c VimwikiUISelect; clear'
 alias diary='cd ~/Docs/wiki; nvim -c VimwikiDiaryIndex; clear'
@@ -158,5 +165,8 @@ alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir
 
 # gtd shell script
 alias on='gtd -ts'
+
+# tmuxinator
+alias mux='tmuxinator'
 
  alias linuxgui='startxfce4'
