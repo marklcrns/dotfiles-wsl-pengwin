@@ -56,9 +56,10 @@ alias gh='open https://github.com; clear'
 alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed "s/git@/http:\/\//" | sed "s/com:/com\//"`| head -n1'
 alias gist='open https://gist.github.com; clear'
 alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
+alias commit='git commit'
 alias commitall='git add . && git commit'
-alias pushall='cd ~/Docs/wiki; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; dotupdate; dotfiles; git commit; git push; echo "Update finished"'
-alias pullall='cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
+alias pushallrepo='cd ~/Docs/wiki; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; dotupdate; dotfiles; git commit; git push; echo "Update finished"'
+alias pullallrepo='cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
 
 # live browser server
 # alias live='http-server'
@@ -104,7 +105,7 @@ alias twl='task list'
 # Vimwiki
 alias wiki='cd ~/Docs/wiki; nvim -c VimwikiUISelect; clear'
 alias diary='cd ~/Docs/wiki; nvim -c VimwikiDiaryIndex; clear'
-alias today='cd ~/Docs/wiki; nvim -c VimwikiMakeDiaryNote; clear'
+alias today='cd ~/Docs/wiki; nvim -c "set laststatus=0 showtabline=0 colorcolumn=0|VimwikiMakeDiaryNote"; clear'
 alias wikidocs='cd ~/Docs/wiki'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
