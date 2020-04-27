@@ -149,9 +149,50 @@ alias winypath='winpath | xclip -selection clipboard; printf "%s\n...win path co
 
 # Update dotfiles backup repository
 alias dotfiles='cd ~/Projects/dotfiles'
-alias dotbackup='cd $HOME;cp -r .bashrc .bash_aliases .gitconfig .profile .tmux.conf ~/.vim/.vimrc .zshenv .zshrc /mnt/c/Users/MarkL/Documents/gtd bin ~/.scimrc ~/.config/ranger/rc.conf ~/.config/zathura/zathurarc ~/.config/fish ~/Projects/dotfiles/.old.bak/; cd -; clear; echo "dotbackup complete"'
-alias dotdist='dotbackup; cd ~/Projects/dotfiles; cp -r .bashrc .bash_aliases .gitconfig .profile .tmux.conf .zshenv .zshrc bin .scimrc $HOME; cp rc.conf ~/.config/ranger/; cp -r fish ~/.config; cp .vimrc ~/.vim/; cp -r gtd /mnt/c/Users/MarkL/Documents; cd -; clear; echo "dotdistribute complete"'
-alias dotupdate='cd ~/Projects/dotfiles;cp -r ~/.bashrc ~/.bash_aliases ~/.gitconfig ~/.profile ~/.tmux.conf ~/.zshenv ~/.zshrc /mnt/c/Users/MarkL/Documents/gtd ~/bin ~/.scimrc ~/.config/ranger/rc.conf ~/.config/zathura/zathurarc ~/.config/fish .; git add .; git status; cd -'
+alias dotbackup='cd $HOME; \
+  cp -r \
+  .bashrc .bash_aliases .profile \
+  .zshenv .zshrc \
+  .tmux.conf \
+  .gitconfig \
+  bin \
+  ~/.vim/ \
+  /mnt/c/Users/MarkL/Documents/gtd \
+  ~/.scimrc \
+  ~/.config/ranger/rc.conf \
+  ~/.config/zathura/zathurarc \
+  ~/.config/fish \
+  ~/Projects/dotfiles/.old.bak/; \
+  cd -; clear; echo "dotbackup complete"'
+alias dotdist='dotbackup; \
+  cd ~/Projects/dotfiles; cp -r \
+  .bashrc .bash_aliases .profile \
+  .zshenv .zshrc \
+  .tmux.conf \
+  .gitconfig \
+  bin \
+  .vim/ \
+  .scimrc \
+  $HOME; \
+  cp \rc.conf ~/.config/ranger/; \
+  cp -r fish ~/.config; \
+  cp zathurarc ~/.config/zathura/; \
+  cp .vimrc ~/.vim/; \
+  cp -r gtd /mnt/c/Users/MarkL/Documents; \
+  cd -; clear; echo "dotdistribute complete"'
+alias dotupdate='cd ~/Projects/dotfiles;\
+  cp -r \
+  ~/.bashrc ~/.bash_aliases ~/.profile \
+  ~/.zshenv ~/.zshrc \
+  ~/.tmux.conf \
+  ~/.gitconfig \
+  ~/bin \
+  ~/.vim/ \
+  ~/.scimrc \
+  ~/.config/ranger/rc.conf \
+  ~/.config/zathura/zathurarc \
+  /mnt/c/Users/MarkL/Documents/gtd \
+  git add .; git status; cd -'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
 
@@ -175,8 +216,10 @@ alias runpg='sudo -u postgres psql'
 alias rcopy='rclone copy -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rsync='rclone sync -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
-alias rclone-dev-gdrive='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive: --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rclone-dev-gdrive='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive:. --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+
+alias rclone-dev-dbox='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip Dropbox:. --backup-dir Dropbox:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
 # gtd shell script
 alias on='gtd -ts'
