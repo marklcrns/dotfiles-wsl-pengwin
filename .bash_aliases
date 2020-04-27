@@ -196,7 +196,7 @@ alias dotupdate='cd ~/Projects/dotfiles;\
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
 
-# Nameserver workaround for WSL
+# Nameserver workaround for WSL2
 alias backupns='cat /etc/resolv.conf > ~/nameserver.txt'
 alias setns='echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf'
 alias restorens='cat ~/nameserver.txt | sudo tee /etc/resolv.conf'
