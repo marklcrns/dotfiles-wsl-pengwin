@@ -163,7 +163,7 @@ alias dotbackup='cd $HOME; \
   ~/.config/zathura/zathurarc \
   ~/.config/fish \
   ~/Projects/dotfiles/.old.bak/; \
-  cd -; clear; echo "dotbackup complete"'
+  cd -; clear; echo "dotfiles backup complete"'
 alias dotdist='dotbackup; \
   cd ~/Projects/dotfiles; cp -r \
   .bashrc .bash_aliases .profile \
@@ -179,7 +179,7 @@ alias dotdist='dotbackup; \
   cp zathurarc ~/.config/zathura/; \
   cp .vimrc ~/.vim/; \
   cp -r gtd /mnt/c/Users/MarkL/Documents; \
-  cd -; clear; echo "dotdistribute complete"'
+  cd -; clear; echo "dotfiles distribute complete"'
 alias dotupdate='cd ~/Projects/dotfiles;\
   cp -r \
   ~/.bashrc ~/.bash_aliases ~/.profile \
@@ -192,7 +192,7 @@ alias dotupdate='cd ~/Projects/dotfiles;\
   ~/.config/ranger/rc.conf \
   ~/.config/zathura/zathurarc \
   /mnt/c/Users/MarkL/Documents/gtd \
-  git add .; git status; cd -'
+  git add .; git status; cd -; echo "dotfiles update complete"'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
 
