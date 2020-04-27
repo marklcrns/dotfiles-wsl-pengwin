@@ -149,6 +149,7 @@ alias winypath='winpath | xclip -selection clipboard; printf "%s\n...win path co
 
 # Update dotfiles backup repository
 alias dotfiles='cd ~/Projects/dotfiles'
+DATE=`date "+%Y-%m-%d"`
 alias dotbackup='cd $HOME; \
   cp -r \
   .bashrc .bash_aliases .profile \
@@ -157,12 +158,12 @@ alias dotbackup='cd $HOME; \
   .gitconfig \
   bin \
   ~/.vim/ \
-  /mnt/c/Users/MarkL/Documents/gtd \
   ~/.scimrc \
   ~/.config/ranger/rc.conf \
   ~/.config/zathura/zathurarc \
+  /mnt/c/Users/MarkL/Documents/gtd \
   ~/.config/fish \
-  ~/Projects/dotfiles/.old.bak/; \
+  ~/Projects/dotfiles/.`date "+%Y-%m-%d"`_old.bak/; \
   cd -; clear; echo "dotfiles backup complete"'
 alias dotdist='dotbackup; \
   cd ~/Projects/dotfiles; cp -r \
@@ -175,10 +176,9 @@ alias dotdist='dotbackup; \
   .scimrc \
   $HOME; \
   cp \rc.conf ~/.config/ranger/; \
-  cp -r fish ~/.config; \
   cp zathurarc ~/.config/zathura/; \
-  cp .vimrc ~/.vim/; \
   cp -r gtd /mnt/c/Users/MarkL/Documents; \
+  cp -r fish ~/.config; \
   cd -; clear; echo "dotfiles distribute complete"'
 alias dotupdate='cd ~/Projects/dotfiles;\
   cp -r \
@@ -192,7 +192,7 @@ alias dotupdate='cd ~/Projects/dotfiles;\
   ~/.config/ranger/rc.conf \
   ~/.config/zathura/zathurarc \
   /mnt/c/Users/MarkL/Documents/gtd \
-  git add .; git status; cd -; echo "dotfiles update complete"'
+  git add .; git status; echo "dotfiles update complete"'
 alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
 alias dotpush='cd ~/Projects/dotfiles;git push'
 
