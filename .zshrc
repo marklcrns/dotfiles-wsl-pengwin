@@ -18,6 +18,8 @@ export TLDR_PARAM='blue'
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.emacs.d/bin # emacs bin
 
+export BROWSER='/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe'
+
 # truncate command line prompt user
 DEFAULT_USER=`whoami`
 
@@ -27,7 +29,8 @@ DEFAULT_USER=`whoami`
 # fi
 
 # Workaround for WSL 2 X Server not working
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+# export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
 
 # Path to your oh-my-zsh installation.

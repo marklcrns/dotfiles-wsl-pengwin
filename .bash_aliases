@@ -1,8 +1,6 @@
 # config files
 alias vimrc='nvim ~/.vim/.vimrc'
 alias tmuxconf='nvim ~/.tmux.conf'
-alias fishrc='nvim ~/.config/fish/config.fish'
-alias sofish='source ~/.config/fish/config.fish'
 alias bashrc='nvim ~/.bashrc'
 alias zshrc='nvim ~/.zshrc'
 alias nvimrc='cd ~/.config/nvim'
@@ -77,6 +75,24 @@ alias flask='FLASK_APP=application.py FLASK_ENV=development FLASK_DEBUG=1 python
 alias envactivate='source env/bin/activate'
 alias envactivatefish='source env/bin/activate.fish'
 
+# Make native commands verbose
+alias mv='mv -v'
+alias rm='rm -v'
+alias cp='cp -v'
+alias mkdir='mkdir -v'
+alias rmdir='rmdir -v'
+
+# Ref: https://unix.stackexchange.com/a/125386
+mkcdir () {
+  mkdir -pv -- "$1" &&
+    cd -P -- "$1"
+}
+
+touched() {
+  touch -- "$1" &&
+    nvim -- "$1"
+}
+
 # Binaries
 alias open='xdg-open'
 alias ls='exa'
@@ -84,8 +100,6 @@ alias l='exa -l'
 alias la='exa -la'
 alias fd='fdfind'
 alias python='python3'
-
-# Shortcut Commands
 
 # xclip shortcuts
 # use pipe before the alias command to work with xclip
@@ -105,7 +119,7 @@ alias twl='task list'
 # Vimwiki
 alias wiki='cd ~/Docs/wiki; nvim -c VimwikiUISelect; clear'
 alias diary='cd ~/Docs/wiki; nvim -c VimwikiDiaryIndex; clear'
-alias today='cd ~/Docs/wiki; nvim -c "set laststatus=0 showtabline=0 colorcolumn=0|VimwikiMakeDiaryNote"; clear'
+alias dtoday='cd ~/Docs/wiki; nvim -c "set laststatus=0 showtabline=0 colorcolumn=0|VimwikiMakeDiaryNote"; clear'
 alias wikidocs='cd ~/Docs/wiki'
 
 # Remove debug.log files recursively (will also list all debug files before removal)
@@ -161,7 +175,7 @@ alias runpg='sudo -u postgres psql'
 alias rcopy='rclone copy -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rsync='rclone sync -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
-alias rclone-dev-gdrive='zip -r dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive: --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rclone-dev-gdrive='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive: --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
 # gtd shell script
@@ -170,4 +184,4 @@ alias on='gtd -ts'
 # tmuxinator
 alias mux='tmuxinator'
 
- alias linuxgui='startxfce4'
+alias linuxgui='startxfce4'
