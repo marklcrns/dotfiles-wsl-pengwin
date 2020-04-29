@@ -49,16 +49,6 @@ alias explore='explorer.exe'
 alias ffox='firefox.exe'
 alias gchrome='chrome.exe'
 
-# GitHub
-alias gh='open https://github.com; clear'
-alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed "s/git@/http:\/\//" | sed "s/com:/com\//"`| head -n1'
-alias gist='open https://gist.github.com; clear'
-alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
-alias commit='git commit'
-alias commitall='git add . && git commit'
-alias pushallrepo='cd ~/Docs/wiki; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; dotupdate; dotfiles; git commit; git push; echo "Update finished"'
-alias pullallrepo='cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  ~/Projects/dotfiles; pwd; git pull; echo "Syncing complete"'
-
 # live browser server
 # alias live='http-server'
 
@@ -145,12 +135,12 @@ winpath() {
   output=$(pwd | sed -e "$regex1" -e "$regex2" -e "$regex3" -re "$regex4")
   printf "%s" "$output"
 }
-alias winypath='winpath | xclip -selection clipboard; printf "%s\n...win path copied" "$output"'
+alias winypath="winpath | xclip -selection clipboard; printf '%s\n...win path copied' '$output'"
 
 # Update dotfiles backup repository
-alias dotfiles='cd ~/Projects/dotfiles'
-DATE=`date "+%Y-%m-%d"`
-alias dotbackup='cd $HOME; \
+DOTFILES='~/Projects/dotfiles'
+alias dotfiles="cd $DOTFILES"
+alias dotbackup="cd $HOME; \
   cp -r \
   .bashrc .bash_aliases .profile \
   .zshenv .zshrc \
@@ -163,10 +153,10 @@ alias dotbackup='cd $HOME; \
   ~/.config/zathura/zathurarc \
   /mnt/c/Users/MarkL/Documents/gtd \
   ~/.config/fish \
-  ~/Projects/dotfiles/.`date "+%Y-%m-%d"`_old.bak/; \
-  cd -; clear; echo "dotfiles backup complete"'
-alias dotdist='dotbackup; \
-  cd ~/Projects/dotfiles; cp -r \
+  ~/.`date '+%Y-%m-%d'`_old_dotfiles.bak/; \
+  cd -; clear; echo 'dotfiles backup complete'"
+alias dotdist="dotbackup; \
+  cd $DOTFILES; cp -r \
   .bashrc .bash_aliases .profile \
   .zshenv .zshrc \
   .tmux.conf \
@@ -179,8 +169,8 @@ alias dotdist='dotbackup; \
   cp zathurarc ~/.config/zathura/; \
   cp -r gtd /mnt/c/Users/MarkL/Documents; \
   cp -r fish ~/.config; \
-  cd -; clear; echo "dotfiles distribute complete"'
-alias dotupdate='cd ~/Projects/dotfiles;\
+  cd -; clear; echo 'dotfiles distribute complete'"
+alias dotupdate="cd $DOTFILES;\
   cp -r \
   ~/.bashrc ~/.bash_aliases ~/.profile \
   ~/.zshenv ~/.zshrc \
@@ -192,9 +182,19 @@ alias dotupdate='cd ~/Projects/dotfiles;\
   ~/.config/ranger/rc.conf \
   ~/.config/zathura/zathurarc \
   /mnt/c/Users/MarkL/Documents/gtd \
-  git add .; git status; echo "dotfiles update complete"'
-alias dotcommit='cd ~/Projects/dotfiles;git commit -m'
-alias dotpush='cd ~/Projects/dotfiles;git push'
+  git add .; git status; echo 'dotfiles update complete'"
+alias dotcommit="cd $DOTFILES;git commit -m"
+alias dotpush="cd $DOTFILES;git push"
+
+# GitHub
+alias gh='open https://github.com; clear'
+alias repo='open `git remote -v | grep fetch | awk "{print $2}" | sed "s/git@/http:\/\//" | sed "s/com:/com\//"`| head -n1'
+alias gist='open https://gist.github.com; clear'
+alias insigcommit='git add  . && git commit -m "Insignificant commit" && git push'
+alias commit='git commit'
+alias commitall='git add . && git commit'
+alias pushallrepo="cd ~/Docs/wiki; git add .; git commit; git push; cd ~/.config/nvim; pwd; git add .; git commit; git push; cd ~/Projects/references; git add .; git commit; git push; dotupdate; dotfiles; git commit; git push; echo 'Update finished'"
+alias pullallrepo="cd ~/Docs/wiki; pwd; git pull; cd ~/.config/nvim; pwd; git pull; ~/Projects/references; pwd; git pull;  $DOTFILES; pwd; git pull; echo 'Syncing complete'"
 
 # Nameserver workaround for WSL2
 alias backupns='cat /etc/resolv.conf > ~/nameserver.txt'
@@ -218,8 +218,8 @@ alias rsync='rclone sync -vvP --fast-list --drive-chunk-size=32M --transfers=6 -
 
 alias rclone-dev-gdrive='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive:. --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
-
 alias rclone-dev-dbox='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip Dropbox:. --backup-dir Dropbox:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rclone-dbox-dev='rclone copy Dropbox:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
 # gtd shell script
 alias on='gtd -ts'
