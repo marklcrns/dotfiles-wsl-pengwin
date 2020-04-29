@@ -216,9 +216,9 @@ alias runpg='sudo -u postgres psql'
 alias rcopy='rclone copy -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rsync='rclone sync -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
-alias rclone-dev-gdrive='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive:. --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rclone-dev-gdrive='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip GoogleDrive: --backup-dir GoogleDrive:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rclone-gdrive-dev='rclone copy GoogleDrive:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
-alias rclone-dev-dbox='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip Dropbox:. --backup-dir Dropbox:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
+alias rclone-dev-dbox='zip -re dev.zip ~/Projects/Dev; rclone copy ~/Projects/dev.zip Dropbox: --backup-dir Dropbox:.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 alias rclone-dbox-dev='rclone copy Dropbox:dev.zip ~/Projects --backup-dir ~/Projects/.dev.bak -vvP --fast-list --drive-chunk-size=32M --transfers=6 --checkers=6 --tpslimit=2'
 
 # gtd shell script
